@@ -1,0 +1,19 @@
+migration_loaders:
+  eclair.adapter.message_queue:
+    class: Daikon\Flysystem\Migration\FlysystemMigrationLoader
+    connector: eclair.adapter.filesystem
+    settings:
+      location: migration://rabbitmq
+
+migration_adapters:
+  eclair.adapter.message_queue:
+    class: Daikon\RabbitMq3\Migration\RabbitMq3MigrationAdapter
+    connector: eclair.adapter.message_queue.admin
+    settings:
+      exchange: eclair.adapter.migration_list
+
+migration_targets:
+  eclair.adapter.message_queue:
+    enabled: true
+    migration_adapter: eclair.adapter.message_queue
+    migration_loader: eclair.adapter.message_queue

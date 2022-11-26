@@ -1,0 +1,17 @@
+eclair.adapter.filesystem:
+  connector: daikon.filesystem
+  settings:
+    mounts:
+      migration:
+        adapter: League\Flysystem\Adapter\Local
+        location: ${crates.eclair.adapter.migration_dir}
+
+eclair.adapter.message_queue:
+  connector: daikon.message_queue
+
+eclair.adapter.message_queue.admin:
+  connector: daikon.message_queue.admin
+
+eclair.adapter.rpc:
+  class: NGUtech\Eclair\Connector\EclairRpcConnector
+  settings: ${crates.eclair.adapter.connectors.rpc}

@@ -1,0 +1,5 @@
+job_workers:
+  eclair.adapter.message_queue:
+    class: NGUtech\Eclair\Message\EclairMessageWorker
+    dependencies:
+      connector: eclair.adapter.message_queue
